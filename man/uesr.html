@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>User Guide</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>User Guide</h1>
+
+<ul>
+<li><a href="#overview">Overview</a>
+
+<ul>
+<li><a href="#cite">How to Cite</a></li>
+</ul></li>
+<li><a href="#data-settings">Data settings</a>
+
+<ul>
+<li><a href="#type">Data Type</a></li>
+<li><a href="#dataset">Dataset</a></li>
+<li><a href="#import">Import Data</a></li>
+</ul></li>
+<li><a href="#gen-settings">General settings</a>
+
+<ul>
+<li><a href="#endpoint">Endpoint</a></li>
+<li><a href="#knots">Knots</a></li>
+<li><a href="#bootstraps">Bootstraps</a></li>
+</ul></li>
+<li><a href="#output">Output</a>
+
+<ul>
+<li><a href="#summary">Data Summary</a></li>
+<li><a href="#inext">Rarefaction/Extrapolation</a></li>
+<li><a href="#plot">Figure Plots</a><br/></li>
+</ul></li>
+<li><a href="#reference">References</a></li>
+</ul>
+
+<hr/>
+
+<h2 id="overview">Overview</h2>
+
+<p>The program <strong>iNEXT</strong> (<strong>iN</strong>terpolation and <strong>EXT</strong>rapolation) online is written in the <a href="http://www.r-project.org/">R</a> language and the interactive web application is built by using <a href="http://www.rstudio.com/shiny/">Shiny</a>. The user provides a vector of abundances of individual species (abundance data) or incidences of individual species (incidence data). iNEXT computes the following species richness estimates and associated 95% confidence intervals:</p>
+
+<ol>
+<li><p>Sample-size-based rarefaction and extrapolation: species richness estimates for rarefied and extrapolated samples up to a size specified by the user (i.e., an endpoint, see below). Refer to Colwell et al. (2012) for details.</p></li>
+<li><p>Coverage-based rarefaction and extrapolation: species richness estimates for rarefied and extrapolated samples for sample coverage up to a coverage specified by the user (i.e., an endpoint, see below). Refer to Chao and Jost (2012) for details.</p></li>
+</ol>
+
+<p>iNEXT also plots the following three integrated sampling curves suggested in Chao et al. (2013) for unified sampling and estimation in species diversity analysis.</p>
+
+<ol>
+<li><p>Sample-size-based rarefaction and extrapolation sampling curve: this curve plots the species richness estimates for a rarefied and extrapolated sample with respect to sample size up to a specified endpoint.</p></li>
+<li><p>Sample completeness curve: this curve plots the sample completeness (as measured by sample coverage) with respect to sample size. The curve provides a bridge between sample-size- and coverage-based rarefaction and extrapolation.</p></li>
+<li><p>Coverage-based rarefaction and extrapolation sampling curve: this curve plots the species richness estimates for rarefied sample and extrapolated sample with respect to sample coverage up to a specified endpoint.</p></li>
+</ol>
+
+<h3 id="cite">How to Cite</h3>
+
+<p><font color="ff0000">If you use iNEXT to obtain results for publication, you should cite at least one of the relevant papers (Chao and Jost 2012; Colwell et al. 2012; Chao et al. 2013) along with the following reference for iNEXT:</font></p>
+
+<p style="padding-left: 30px;">Hsieh, T. C., K. H. Ma, and A. Chao. 2013. iNEXT online: interpolation and extrapolation (Version 1.0) [Software]. Available from <a href="http://chao.stat.nthu.edu.tw/blog/software-download/">http://chao.stat.nthu.edu.tw/blog/software-download/</a>.</p>
+
+<p>To help refine iNEXT, your comments or feedbacks would be welcome (please send them to <a href="mailto:chao@stat.nthu.edu.tw">chao@stat.nthu.edu.tw</a>).</p>
+
+<h2 id="data-settings">Data Settings</h2>
+
+<h3 id="type">Data Type</h3>
+
+<p>iNEXT supports two types of data for rarefaction and extrapolation:</p>
+
+<ul>
+<li>Abundance data: a vector of abundances of individual species in the sample.</li>
+<li>Incidence data: a vector of incidences of individual species in the sample (i.e., the number of sampling units that a species is found). 
+User should select one of the data types to obtain output. Not only the data format but also the statistical method for the two data types are different. Please make sure you select the correct data type.</li>
+</ul>
+
+<h3 id="dataset">Dataset</h3>
+
+<p>Some demonstration datasets are used for illustration. </p>
+
+<ul>
+<li>Abundance data: tropical foliage insects data in two sites: Oldgrowth and Secondgrowth (Janzen 1973a, b)</li>
+<li>Incidence data: tropical rain forest ants data by three collecting methods: Berlese, Malaise and fogging (Longino et al. 2002)
+We suggest that you first run these demo datasets and try to understand the output before you import your own data sets. 
+All the titles of the demo data and imported data (see <a href="#import">Import Data</a> for details) are listed in this list box. You can choose a single dataset or multiple datasets for comparisons. </li>
+</ul>
+
+<h3 id="import">Import Data</h3>
+
+<p>iNEXT provides a visualized import data function. After checking the checkbox: <strong>Import data</strong>, user can input data (line by line) in the text area; the title of your imported data will be listed in the box: <strong>Select dataset</strong>. The import formats for the abundance data and incidence data are different. The data formats for the two types of data are described below.</p>
+
+<ul>
+<li><p>Import abundance data: 
+We use a simple example to show how to import abundance data. Consider the spider data with two canopy manipulation treatments (Girdled Treatment and Logged Treatment; data are provided in Ellison et al. 2010 and Sackett et al. 2011).</p>
+
+<pre><code class="r">Girdled 46 22 17 15 15  9  8  6  6  4  2  2  2  2  1  1  1  1  1  1  1  1  1  1  1  1 
+Logged 88 22 16 15 13 10  8  8  7  7  7  5  4  4  4  3  3  3  3  2  2  2  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+</code></pre></li>
+</ul>
+
+<p>Since there are two datasets, the imported data contain two lines (separated by return, &ldquo;?&rdquo;). The first line includes the species abundances for 26 species in the Girdled Treatment and the second line includes the species abundances for 37 species in the Logged treatment. <strong>For each line, the first entry is the title of the dataset (the title is not allowed to start with a numerical digit) followed by the species abundances.</strong> All entries should be separated by blank space (&ldquo; &rdquo;). For example, in the Girdled Treatment, the most abundant species is represented by 46 individuals, the second most abundant species is represented by 22 individuals in the sample, etc. Although the species abundances in this example are entered in a decreasing order, the ordering is not relevant in our analysis. You can choose any ordering of species abundances. </p>
+
+<ul>
+<li><p>Import incidence data:
+We use the ant data at two elevations (the 1500m and 2000m elevations on the Barva Transect in northeastern Costa Rica from Longino and Colwell 2011) as an example:</p>
+
+<pre><code class="r">Ants_1500m 200 144 113 79 76 74 73 53 50 43 33 32 30 29 25 25 25 24 23 23 19 18 17 17 11 11 9 9 9 9 6 6 5 5 5 5 4 4 3 3 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1
+Ants_2000m 200 80 59 34 23 19 15 13 8 8 4 3 2 2 1
+</code></pre></li>
+</ul>
+
+<p>The import data contain two lines (separated by return, &ldquo;?&rdquo;), the first line includes ants data at 1500m elevation, and the second line includes ants data at 2000m elevation. ** For each line, the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found). ** All element entries should be separated by blank space (&ldquo; &rdquo;). For example, at 1500m elevation, 200 sampling units were used. The most frequent species was found in 144 sampling units, the second most frequent species was found in 113 units, etc. Although the species incidences in this example are entered in a decreasing order, the ordering is not relevant in our analysis.</p>
+
+<h2 id="gen-settings">General settings</h2>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<p>The endpoint is a value specifying the sample size (number of individuals/sampling units) or sample coverage that is the endpoint for extrapolation. </p>
+
+<ol>
+<li><p>If only one dataset is selected for sample-size-based rarefaction/extrapolation, the default endpoint (that appears in the lower end of the slider-bar) is double the original sample size ( = reference sample size). For coverage-based rarefaction/extrapolation, the default endpoint (that appears in the lower end of the slider-bar) is the coverage associated with a doubling of the reference sample size. </p></li>
+<li><p>If multiple datasets are selected for comparison for sample-size-based rarefaction/extrapolation, then the default (that appears in the lower end of the slider-bar) is defined as “double the smallest reference sample size or the maximum reference sample size, whichever is larger”. This is referred to as“base sample size”in Chao et al. (2013). For  coverage-based rarefaction/extrapolation, the default (that appears in the lower end of the slider-bar) is defined as “the lowest coverage for doubled reference sample sizes or the maximum coverage for reference samples, whichever is larger”. This coverage is referred to as “base sample coverage” in Chao et al. (2013). </p></li>
+</ol>
+
+<p>The author can select any endpoint that is between the reference sample size (or reference sample coverage) to a large number sample size that corresponds to a maximum coverage of 99.9%. We suggest the user do not select an endpoint that goes too far from the recommended default (that appears in the lower end of the slider-bar). </p>
+
+<h3 id="knots">Knots</h3>
+
+<p>Number of knots (say K, default is 40) is an integer specifying that the rarefaction part is divided as approximately K/2 equally spaced knots (sample sizes) between size 1 and the reference size, and the extrapolation part is also divided as approximately K/2 equally spaced knots (sample sizes) between the reference sample size and the endpoint. Each knot represents a sample size of a particular number of individuals for which the species richness estimate and its associated 95% confidence interval will be calculated. The default is 40, which locates the reference sample at the midpoint of the selected number of knots. If you choose a large number of knots (so that the plots will look smoother), you may need to wait for a long time to obtain output because the bootstrapping involved in the construction of confidence intervals (if your entry for number of bootstraps is not 0; see below) is time consuming.</p>
+
+<h3 id="bootstraps">Bootstraps</h3>
+
+<p>Number of bootstraps (say B) is an integer specifying the number of replications for bootstrap resampling scheme in computing variance and constructing 95% confidence intervals. Refer to Chao et al. (2013) for details. Default is 0 (it means that variances and confidence intervals will not be computed or plotted). To save running time, we recommend that 50 or 100 bootstraps will be sufficient for most applications.  </p>
+
+<h2 id="output">Output</h2>
+
+<h3 id="summary">Data Summary</h3>
+
+<p>This tab panel shows basic data information for the selected data. The output variables are interpreted at the bottom of the tab panel. Click <a href="">Download as csv file</a> to download the output summary.</p>
+
+<h3 id="inext">Rarefaction/Extrapolation</h3>
+
+<p>This tab panel shows the main output for iNEXT. The output variables are interpreted at the bottom of the tab panel. Click <a href="">Download as csv file</a> to download the output table.</p>
+
+<h3 id="plot"> Figure Plots</h3>
+
+<p>This tab panel shows three species rarefaction/extrapolation curves (described in <a href="#overview">Overview</a>). Click <a href="">Download as PDF</a> to download any figure.</p>
+
+<h2 id="reference">References</h2>
+
+<ol>
+<li><p>Chao, A., N. J. Gotelli, T. C. Hsieh, E. L. Sander, K. H. Ma, R. K. Colwell, and A. M. Ellison 2013. Rarefaction and extrapolation with Hill numbers: a unified framework for sampling and estimation in biodiversity studies, Ecological Monographs (to appear).</p></li>
+<li><p>Chao, A., and L. Jost. 2012. Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. Ecology 93:2533-2547.</p></li>
+<li><p>Colwell, R. K., A. Chao, N. J. Gotelli, S. Y. Lin, C. X. Mao, R. L. Chazdon, and J. T. Longino. 2012. Models and estimators linking individual-based and sample-based rarefaction, extrapolation and comparison of assemblages. Journal of Plant Ecology 5:3-21.</p></li>
+<li><p>Ellison, A. M., A. A. Barker-Plotkin, D. R. Foster, and D. A. Orwig. 2010. Experimentally testing the role of foundation species in forests: the Harvard Forest Hemlock Removal Experiment. Methods in Ecology and Evolution 1:168-179.</p></li>
+<li><p>Hsieh, T. C., K. H. Ma, and A. Chao. 2013. iNEXT online: interpolation and extrapolation (Version 1.0) [Software]. Available from <a href="http://chao.stat.nthu.edu.tw/blog/software-download/">http://chao.stat.nthu.edu.tw/blog/software-download/</a>.</p></li>
+<li><p>Longino, J. T., and R. K. Colwell. 2011. Density compensation, species composition, and richness of ants on a neotropical elevational gradient. Ecosphere 2:art29.</p></li>
+<li><p>Sackett, T. E., S. Record, S. Bewick, B. Baiser, N. J. Sanders, and A. M. Ellison. 2011. Response of macroarthropod assemblages to the loss of hemlock (Tsuga canadensis), a foundation species. Ecosphere 2: art74.</p></li>
+</ol>
+
+</body>
+
+</html>
+
