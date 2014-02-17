@@ -18,19 +18,17 @@ User Guide
 
 * * * * * * * *
 
-<h2 id="overview">Overview</h2>
+_<h2 id="overview">Overview</h2>_
 
 
-The program **ChaoEntropy** (Shannon **entropy** proposed by **Chao** et al.) online is written in the [R][] language and the interactive web application is built by using [Shiny][]. The user provides a vector of abundances of individual species (abundance data) or incidences of individual species (incidence data). **ChaoEntropy** computes the Shannon entropy estimators and associated confidence intervals.
+The program **ChaoEntropy** (Shannon **entropy** proposed by **Chao** et al.) online is written in the <a href="http://www.r-project.org/" target="_blank">R</a> language and the interactive web application is built by using <a href="http://www.rstudio.com/shiny" target="_blank">Shiny</a>. The user provides a vector of abundances of individual species (abundance data) or incidences of individual species (incidence data). **ChaoEntropy** computes the Shannon entropy estimators and associated confidence intervals.
 
 <h3 id="cite">How to Cite</h3>
 <font color="ff0000">If you use **ChaoEntropy** to obtain results for publication, you should cite at least one of the relevant papers (Chao, A., Wang, Y. T. and Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. To appear in Methods in Ecology and Evolution.)</font>
 
 To help refine **ChaoEntropy**, your comments or feedbacks would be welcome (please send them to chao@stat.nthu.edu.tw).
- [R]: http://www.r-project.org/
-[Shiny]: http://www.rstudio.com/shiny/
 
-<h2 id="data-settings">Data Settings</h2>
+_<h2 id="data-settings">Data Settings</h2>_
 <h3 id="type">Data Type</h3>
 **ChaoEntropy** supports two types of data for computation the Shannon entropy:
 * Abundance data: a vector of abundances of individual species in the sample.
@@ -66,7 +64,7 @@ Since there are two datasets, the imported data contain two lines (separated by 
 
 The import data contain two lines (separated by return), the first line includes ant data , and the second line includes seedlings data. ** For each line, the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found). ** All element entries should be separated by blank space (" "). For example, ant data, 62 sampling units were used. The most frequent species was found in 29 sampling units, the second most frequent species was found in 20 units, etc. Although the species incidences in this example are entered in a decreasing order, the ordering is not relevant in our analysis.
 
-<h2 id="gen-settings">General settings</h2>
+_<h2 id="gen-settings">General settings</h2>_
 <h3 id="estimator">Estimator</h3>
 The estimator is a checkbox for select the method which constructed to estimate Shannon entropy.
   * __Chao__ estimator, see Chao et al. (2013)
@@ -82,28 +80,27 @@ Number of bootstraps (say B) is an integer specifying the number of replications
 <h3 id="confidence">Confidence level</h3>
 The confidence level is a positive number $\le 1$ for confidence interval. The default is 0.95.
 
-<h2 id="output">Output</h2>
+_<h2 id="output">Output</h2>_
 <h3 id="summary">Data Summary</h3>
 This tab panel shows basic data information for the selected data. The output variables are interpreted at the bottom of the tab panel. Click [Download as csv file]() to download the output summary.
 
-<h3 id="chaoentropy">Rarefaction/Extrapolation</h3>
+<h3 id="chaoentropy">Estimation</h3>
 This tab panel shows the main output for **ChaoEntropy**. The output variables are interpreted at the bottom of the tab panel. Click [Download as csv file]() to download the output table.
 
-<h3 id="plot"> Figure Plots</h3>
-This tab panel shows three species rarefaction/extrapolation curves (described in [Overview](#overview)). Click [Download as PDF]() to download any figure.
   
-<h2 id="reference">References</h2>
+_<h2 id="reference">References</h2>_
+1. Chao, A., Wang, Y.T. & Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. _Methods in Ecology and Evolution_ (to appear). 
 
-1. Chao, A., N. J. Gotelli, T. C. Hsieh, E. L. Sander, K. H. Ma, R. K. Colwell, and A. M. Ellison 2013. Rarefaction and extrapolation with Hill numbers: a unified framework for sampling and estimation in biodiversity studies, Ecological Monographs (to appear).
+2. Chao, A. & Jost, L. (2012) Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. _Ecology_, __93__, 2533-2547.
 
-2. Chao, A., and L. Jost. 2012. Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. Ecology 93:2533-2547.
+3. Chao, A. & Shen, T.J. (2003) Nonparametric estimation of Shannon's index of diversity when there are unseen species. _Environmental and Ecological Statistics_, __10__, 429-443.
 
-3. Colwell, R. K., A. Chao, N. J. Gotelli, S. Y. Lin, C. X. Mao, R. L. Chazdon, and J. T. Longino. 2012. Models and estimators linking individual-based and sample-based rarefaction, extrapolation and comparison of assemblages. Journal of Plant Ecology 5:3-21.
+4. Grassberger, P. (2003) Entropy estimates from insufficient samplings. URL www.arxiv.org. arXiv:physics/0307138v2. Updated 2008.
 
-4. Ellison, A. M., A. A. Barker-Plotkin, D. R. Foster, and D. A. Orwig. 2010. Experimentally testing the role of foundation species in forests: the Harvard Forest Hemlock Removal Experiment. Methods in Ecology and Evolution 1:168-179.
+5. Zahl, S. (1977) Jackknifing an index of diversity. _Ecology_, __58__, 907-913.
 
-5. Hsieh, T. C., K. H. Ma, and A. Chao. 2013. **ChaoEntropy** online: interpolation and extrapolation (Version 1.0) [Software]. Available from http://chao.stat.nthu.edu.tw/blog/software-download/.
+6. Zhang, Z. (2012) Entropy estimation in Turing's perspective. _Neural Computation_, __24__, 1368-1389.
 
-6. Longino, J. T., and R. K. Colwell. 2011. Density compensation, species composition, and richness of ants on a neotropical elevational gradient. Ecosphere 2:art29.
+7. Chao, A. (1984) Nonparametric estimation of the number of classes in a population. _Scandinavian Journal of Statistics_, __11__, 265-270.
 
-7. Sackett, T. E., S. Record, S. Bewick, B. Baiser, N. J. Sanders, and A. M. Ellison. 2011. Response of macroarthropod assemblages to the loss of hemlock (Tsuga canadensis), a foundation species. Ecosphere 2: art74.
+8. Chao, A. (1987) Estimating the population size for capture-recapture data with unequal catchability. _Biometrics_, __43__, 783-791.
