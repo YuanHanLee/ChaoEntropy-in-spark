@@ -89,6 +89,7 @@ This tab panel shows the main output for **ChaoEntropy**. The output variables a
 
   
 _<h2 id="reference">References</h2>_
+
 1. Chao, A., Wang, Y.T. & Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. _Methods in Ecology and Evolution_ (to appear). 
 
 2. Chao, A. & Jost, L. (2012) Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. _Ecology_, __93__, 2533-2547.
