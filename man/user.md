@@ -96,7 +96,8 @@ _<h2 id="reference">References</h2>_
 
 3. Chao, A. & Shen, T.J. (2003) Nonparametric estimation of Shannon's index of diversity when there are unseen species. _Environmental and Ecological Statistics_, __10__, 429-443.
 
-4. Grassberger, P. (2003) Entropy estimates from insufficient samplings. URL www.arxiv.org. arXiv:physics/0307138v2. Updated 2008.
+4. Grassberger, P. (2003) Entropy estimates from insufficient samplings. <a href="http://www.arxiv.org/" target="_blank">URL</a>. arXiv:physics/0307138v2. Updated 2008.
+
 
 5. Zahl, S. (1977) Jackknifing an index of diversity. _Ecology_, __58__, 907-913.
 
