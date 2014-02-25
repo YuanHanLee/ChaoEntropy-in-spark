@@ -12,23 +12,11 @@ loadingMsg <- tags$div(class="modal", tabindex="-1", role="dialog",
 loadingPanel <- conditionalPanel("$('html').hasClass('shiny-busy')",
                                  loadingMsg)
 
-GTM <- "
-<!-- Google Tag Manager -->
-  <noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-BM4R\"
-height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                                 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-BM4R');</script>
-  <!-- End Google Tag Manager -->
-"
 
 shinyUI(pageWithSidebar(
   headerPanel('ChaoEntropy Online'),
   sidebarPanel(
     tags$head(
-      div(id="GTM", HTML(GTM)), #add google tag manager
       tags$style(type="text/css", "label.radio { display: inline-block; }", ".radio input[type=\"radio\"] { float: none; }"),
       tags$style(type="text/css", "select { max-width: 250px; }"),
       tags$style(type="text/css", "input { max-width: 250px; }"),
@@ -36,13 +24,13 @@ shinyUI(pageWithSidebar(
       #tags$style(type='text/css', ".well { padding: 5px; margin-bottom: 5px; max-width: 300px; }"),
       tags$style(type='text/css', ".span4 { max-width: 300px; }")
     ),
-#     actionButton("goButton", "Run!"),
+    
     p(h4("Data Setting")),
     wellPanel(
       selectInput(inputId="datatype", label="Select data type:",
                   choices=c("Abundance data"="abu", "Incidence data"="inc")),
       uiOutput("choose_dataset"),
-
+      
       p(em("Using ctrl / command key to select multiple datasets you want")),
       
       p("Import data:"),
@@ -57,7 +45,7 @@ shinyUI(pageWithSidebar(
                       "Ant 62  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  5  5  5  5  6  6  7  9  9  9  9 10 10 12 13 14 14 14 15 15 16 18 19 19 20 29 \nSeedlings 121  61  47  52  43  43   9  24   5  24  11  11  13  17   6  10   3   8   9   9  3   6   6   1   7   4   6   6   4   3   4   2   2   1   1")
       ),          
       p(em("Refer to user guide for importing data"))
-
+      
     ),
     
     p(h4("General Setting")),
@@ -85,12 +73,10 @@ shinyUI(pageWithSidebar(
       tabPanel("Data Summary", h3("Basic data information"),
                loadingPanel,
                htmlOutput("data_summary")
-#                verbatimTextOutput("data_summary")
       ),
       tabPanel("Estimation", h3("Estimation of entropy"), 
                loadingPanel,
                htmlOutput('est'),
-#                verbatimTextOutput('est'),
                downloadLink("dlest", "Download as csv file"),
                conditionalPanel(
                  condition="input.datatype == 'abu'",

@@ -11,7 +11,7 @@ source("sub.R")
 
 shinyServer(function(input, output) {
   tempRD2 <- paste(tempfile(), ".RData", sep="")
-
+  
   loadPaste <- reactive({
     if (input$datatype == "abu") {
       text <- input$copyAndPaste_abu
@@ -76,7 +76,7 @@ shinyServer(function(input, output) {
     selectInput("dataset", "Select dataset:", choices = dat, selected = dat[1], multiple = TRUE)
     
   })
-    
+  
   mymethod <- reactive({
     if (input$datatype == "abu")
       out <- input$method1
@@ -121,7 +121,7 @@ shinyServer(function(input, output) {
     names(gtab) <- input$dataset
     names(excl) <- input$dataset
     saveRDS(excl, tempRD2)
-
+    
     return(gtab)
     
   })
@@ -132,7 +132,7 @@ shinyServer(function(input, output) {
     content = function(file) { 
       out <- readRDS(tempRD2)
       saveList2csv(out, file)
-#       write.csv(out, file)
+      #       write.csv(out, file)
     }
   )
 })
