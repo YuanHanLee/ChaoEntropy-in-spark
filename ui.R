@@ -71,11 +71,13 @@ shinyUI(pageWithSidebar(
     
     tabsetPanel(
       tabPanel("Data Summary", h3("Basic data information"),
-               verbatimTextOutput("data_summary")
+               htmlOutput("data_summary")
+#                verbatimTextOutput("data_summary")
       ),
       tabPanel("Estimation", h3("Estimation of entropy"), 
+               htmlOutput('est'),
                verbatimTextOutput('est'),
-               downloadLink("dlest", "Download as csv file"),
+#                downloadLink("dlest", "Download as csv file"),
                conditionalPanel(
                  condition="input.datatype == 'abu'",
                  includeMarkdown("man/estimator_abu.md")),

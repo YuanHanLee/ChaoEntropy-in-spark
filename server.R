@@ -1,12 +1,13 @@
 require(shiny)
 require(ChaoEntropyOnline)
+require(googleVis)
 
 data(Ant)
 data(Spider)
 data(Birds)
 data(Seedlings)
 
-source("sub.R")
+source("sub2.R")
 
 shinyServer(function(input, output) {
   tempRD2 <- paste(tempfile(), ".RData", sep="")
@@ -87,10 +88,15 @@ shinyServer(function(input, output) {
   output$data_summary <- renderPrint({
     dataset <-   selectedData()
     if (input$datatype == "abu")
-      summ <- lapply(dataset, function(x) BasicInfoFun_Ind(x, input$nboot))
+#       summ <- gvisTable(BasicInfoFun_Ind(x, input$nboot))
+      summ <- lapply(dataset, function(x) {
+        gvisTable(BasicInfoFun_Ind(x, input$nboot), options=list(width='90%', height='50%', sort='disable'))
+      })
     if (input$datatype == "inc")
-      summ <- lapply(dataset, function(x) BasicInfoFun_Sam(x, input$nboot))
-    
+      summ <- lapply(dataset, function(x) {
+        gvisTable(BasicInfoFun_Sam(x, input$nboot), options=list(width='90%', height='50%', sort='disable'))
+      })
+        
     return(summ)
   })
   
@@ -98,10 +104,15 @@ shinyServer(function(input, output) {
   output$est <- renderPrint({
     dataset <-   selectedData()
     out <- lapply(dataset, function(x) {
-      ChaoEntropyOnline(data=x, datatype=input$datatype, method=mymethod(),
-                        nboot=input$nboot, conf=input$conf)
+      temp <- ChaoEntropyOnline(data=x, datatype=input$datatype, method=mymethod(),
+                                nboot=input$nboot, conf=input$conf)
+      output <- as.data.frame(temp)
+      tab <- cbond(Method=rownames(tab), output)
+      rownames(tab) <- NULL
+      gvisTable(tab, options=list(width='90%'))
+      saveRDS(temp, tempRD2)
     })
-    saveRDS(out, tempRD2) 
+#     saveRDS(out, tempRD2)
     return(out)
   })
   
@@ -115,6 +126,3 @@ shinyServer(function(input, output) {
     }
   )
 })
-
-
-
