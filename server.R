@@ -7,11 +7,11 @@ data(Spider)
 data(Birds)
 data(Seedlings)
 
-source("sub2.R")
+source("sub.R")
 
 shinyServer(function(input, output) {
   tempRD2 <- paste(tempfile(), ".RData", sep="")
-  
+
   loadPaste <- reactive({
     if (input$datatype == "abu") {
       text <- input$copyAndPaste_abu
@@ -88,7 +88,6 @@ shinyServer(function(input, output) {
   output$data_summary <- renderPrint({
     dataset <-   selectedData()
     if (input$datatype == "abu")
-#       summ <- gvisTable(BasicInfoFun_Ind(x, input$nboot))
       summ <- lapply(dataset, function(x) {
         gvisTable(BasicInfoFun_Ind(x, input$nboot), options=list(width='90%', height='50%', sort='disable'))
       })
@@ -96,7 +95,6 @@ shinyServer(function(input, output) {
       summ <- lapply(dataset, function(x) {
         gvisTable(BasicInfoFun_Sam(x, input$nboot), options=list(width='90%', height='50%', sort='disable'))
       })
-        
     return(summ)
   })
   
@@ -107,13 +105,25 @@ shinyServer(function(input, output) {
       temp <- ChaoEntropyOnline(data=x, datatype=input$datatype, method=mymethod(),
                                 nboot=input$nboot, conf=input$conf)
       output <- as.data.frame(temp)
-      tab <- cbond(Method=rownames(tab), output)
+      tab <- cbind(Method=rownames(output), output)
       rownames(tab) <- NULL
-      gvisTable(tab, options=list(width='90%'))
-      saveRDS(temp, tempRD2)
+      gis <- gvisTable(tab, options=list(width='90%', height='60%'))
+      return(list(temp, gis))
+      
     })
-#     saveRDS(out, tempRD2)
-    return(out)
+    
+    excl <- list()
+    gtab <- list()
+    for (i in seq_along(dataset)) {
+      excl[i] <- list(out[[i]][[1]])
+      gtab[i] <- list(out[[i]][[2]])
+    }
+    names(gtab) <- input$dataset
+    names(excl) <- input$dataset
+    saveRDS(excl, tempRD2)
+
+    return(gtab)
+    
   })
   
   #Download ChaoEntropy output 

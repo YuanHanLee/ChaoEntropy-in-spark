@@ -1,3 +1,17 @@
+require(shiny)
+loadingBar <- tags$div(class="progress progress-striped active",
+                       tags$div(class="bar", style="width: 100%;"))
+# Code for loading message
+loadingMsg <- tags$div(class="modal", tabindex="-1", role="dialog", 
+                       "aria-labelledby"="myModalLabel", "aria-hidden"="true",
+                       tags$div(class="modal-header",
+                                tags$h3(id="myModalHeader", "Loading...")),
+                       tags$div(class="modal-footer",
+                                loadingBar))
+# The conditional panel to show when shiny is busy
+loadingPanel <- conditionalPanel("$('html').hasClass('shiny-busy')",
+                                 loadingMsg)
+
 GTM <- "
 <!-- Google Tag Manager -->
   <noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-BM4R\"
@@ -9,8 +23,6 @@ height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></nos
   })(window,document,'script','dataLayer','GTM-BM4R');</script>
   <!-- End Google Tag Manager -->
 "
-
-require(shiny)
 
 shinyUI(pageWithSidebar(
   headerPanel('ChaoEntropy Online'),
@@ -24,7 +36,7 @@ shinyUI(pageWithSidebar(
       #tags$style(type='text/css', ".well { padding: 5px; margin-bottom: 5px; max-width: 300px; }"),
       tags$style(type='text/css', ".span4 { max-width: 300px; }")
     ),
-    
+#     actionButton("goButton", "Run!"),
     p(h4("Data Setting")),
     wellPanel(
       selectInput(inputId="datatype", label="Select data type:",
@@ -52,32 +64,34 @@ shinyUI(pageWithSidebar(
     wellPanel(
       conditionalPanel(
         condition = "input.datatype == 'abu'",
-        checkboxGroupInput(inputId="method1", label="Select the estimators:",
+        checkboxGroupInput(inputId="method1", label="Select the methods:",
                            choices=c("Chao", "ChaoShen", "Grassberger", "Jackknife", "Zhang", "Observed"),
                            selected=c("Chao", "ChaoShen", "Grassberger", "Jackknife", "Zhang", "Observed"))
       ),
       
       conditionalPanel(
         condition = "input.datatype == 'inc'",
-        checkboxGroupInput(inputId="method2", label="Select the estimators:",
+        checkboxGroupInput(inputId="method2", label="Select the methods:",
                            choices=c("Chao", "Observed"), selected=c("Chao", "Observed"))
       ),
       numericInput(inputId="nboot", label="Number of bootstraps", value=200, min=1, max=1000, step=1),
       numericInput(inputId="conf", label="Confidence level", value=0.95, min=0, max=1, step=0.01)
     )
+    
   ),
   
   mainPanel(
-    
     tabsetPanel(
       tabPanel("Data Summary", h3("Basic data information"),
+               loadingPanel,
                htmlOutput("data_summary")
 #                verbatimTextOutput("data_summary")
       ),
       tabPanel("Estimation", h3("Estimation of entropy"), 
+               loadingPanel,
                htmlOutput('est'),
-               verbatimTextOutput('est'),
-#                downloadLink("dlest", "Download as csv file"),
+#                verbatimTextOutput('est'),
+               downloadLink("dlest", "Download as csv file"),
                conditionalPanel(
                  condition="input.datatype == 'abu'",
                  includeMarkdown("man/estimator_abu.md")),
