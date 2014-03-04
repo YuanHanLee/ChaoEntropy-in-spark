@@ -12,6 +12,7 @@ loadingMsg <- tags$div(class="modal", tabindex="-1", role="dialog",
 # The conditional panel to show when shiny is busy
 loadingPanel <- conditionalPanel("$('html').hasClass('shiny-busy')",
                                  loadingMsg)
+
 # loadingPanel <- conditionalPanel(paste("input.goButton > 0 &&", 
 #                                        "$('html').hasClass('shiny-busy')"),
 #                                  loadingMsg)
@@ -24,7 +25,6 @@ shinyUI(pageWithSidebar(
       tags$style(type="text/css", "select { max-width: 250px; }"),
       tags$style(type="text/css", "input { max-width: 250px; }"),
       tags$style(type="text/css", "textarea { max-width: 230px; }"),
-      #tags$style(type='text/css', ".well { padding: 5px; margin-bottom: 5px; max-width: 300px; }"),
       tags$style(type='text/css', ".span4 { max-width: 300px; }")
     ),
 #     actionButton("goButton", "Run!"),

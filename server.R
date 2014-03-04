@@ -143,7 +143,6 @@ shinyServer(function(input, output) {
     content = function(file) { 
       out <- readRDS(tempRD2)
       saveList2csv(out, file)
-      #       write.csv(out, file)
     }
   )
 })
