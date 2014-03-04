@@ -1,4 +1,5 @@
 require(shiny)
+
 loadingBar <- tags$div(class="progress progress-striped active",
                        tags$div(class="bar", style="width: 100%;"))
 # Code for loading message
@@ -11,7 +12,9 @@ loadingMsg <- tags$div(class="modal", tabindex="-1", role="dialog",
 # The conditional panel to show when shiny is busy
 loadingPanel <- conditionalPanel("$('html').hasClass('shiny-busy')",
                                  loadingMsg)
-
+# loadingPanel <- conditionalPanel(paste("input.goButton > 0 &&", 
+#                                        "$('html').hasClass('shiny-busy')"),
+#                                  loadingMsg)
 
 shinyUI(pageWithSidebar(
   headerPanel('ChaoEntropy Online'),
@@ -24,7 +27,8 @@ shinyUI(pageWithSidebar(
       #tags$style(type='text/css', ".well { padding: 5px; margin-bottom: 5px; max-width: 300px; }"),
       tags$style(type='text/css', ".span4 { max-width: 300px; }")
     ),
-    
+#     actionButton("goButton", "Run!"),
+
     p(h4("Data Setting")),
     wellPanel(
       selectInput(inputId="datatype", label="Select data type:",

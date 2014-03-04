@@ -21,10 +21,10 @@ User Guide
 _<h2 id="overview">Overview</h2>_
 
 
-The program **ChaoEntropy** (Shannon **entropy** proposed by **Chao** et al.) online is written in the <a href="http://www.r-project.org/" target="_blank">R</a> language and the interactive web application is built by using <a href="http://www.rstudio.com/shiny" target="_blank">Shiny</a>. The user provides a vector of abundances of individual species (abundance data) or incidences of individual species (incidence data). **ChaoEntropy** computes the Shannon entropy estimators and associated confidence intervals.
+The program **ChaoEntropy** (Shannon **entropy** proposed by **Chao** et al.) online is written in the <a href="http://www.r-project.org/" target="_blank">R</a> language and the interactive web application is built by using <a href="http://www.rstudio.com/shiny" target="_blank">Shiny</a>. The user provides a vector of abundances of individual species (abundance data) or incidences of individual species (incidence data). **ChaoEntropy** computes the Shannon entropy estimators, bootstrap standard error and confidence intervals.
 
 <h3 id="cite">How to Cite</h3>
-<font color="ff0000">If you use **ChaoEntropy** to obtain results for publication, you should cite at least one of the relevant papers (Chao, A., Wang, Y. T. and Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. To appear in Methods in Ecology and Evolution.)</font>
+<font color="ff0000">If you use **ChaoEntropy** to obtain results for publication, you should cite the papers (Chao, A., Wang, Y. T. and Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. _Methods in Ecology and Evolution_, __4__, 1091-1100.)</font>
 
 To help refine **ChaoEntropy**, your comments or feedbacks would be welcome (please send them to chao@stat.nthu.edu.tw).
 
@@ -67,37 +67,35 @@ The import data contain two lines (separated by return), the first line includes
 _<h2 id="gen-settings">General settings</h2>_
 <h3 id="estimator">Estimator</h3>
 The estimator is a checkbox for select the method which constructed to estimate Shannon entropy.
-  * __Chao__ estimator, see Chao et al. (2013)
-  * __ChaoShen__ estimator, see Chao and Shen (2003)
-  * __Grassberger__ estimator, see Grassberger (2003)
-  * __Jackknife__ estimator, see Zhal (1977)
-  * __Zhang__ estimator, see Zhang (2012)
-  * __Observed__ estimator, the observed entropy estimator
+  * __Chao__ estimator, for detail see reference 1.
+  * __ChaoShen__ estimator, for detail see reference 3.
+  * __Grassberger__ estimator, for detail see reference 4.
+  * __Jackknife__ estimator, for detail see reference 5.
+  * __Zhang__ estimator, for detail see reference 6.
+  * __Observed__ estimator.
 
 <h3 id="bootstraps">Bootstraps</h3>
 Number of bootstraps (say B) is an integer specifying the number of replications for bootstrap resampling scheme in computing variance. Refer to Chao et al. (2013) for details. Default is 100. To save running time, we recommend that 100 or 200 bootstraps will be sufficient for most applications.  
 
 <h3 id="confidence">Confidence level</h3>
-The confidence level is a positive number $\le 1$ for confidence interval. The default is 0.95.
+The confidence level is a positive number is less than or equal to 1. The default is 0.95.
 
 _<h2 id="output">Output</h2>_
 <h3 id="summary">Data Summary</h3>
-This tab panel shows basic data information for the selected data. The output variables are interpreted at the bottom of the tab panel. Click [Download as csv file]() to download the output summary.
+This tab panel shows basic data information for the selected data. The output variables are interpreted at the first column.
 
 <h3 id="chaoentropy">Estimation</h3>
-This tab panel shows the main output for **ChaoEntropy**. The output variables are interpreted at the bottom of the tab panel. Click [Download as csv file]() to download the output table.
-
+This tab panel shows the main output for **ChaoEntropy**. It show a table of various Shannon entropy estimators, their standard error and confidence interval which the method you choose. You also can click [Download as csv file]() to download the output table.
   
 _<h2 id="reference">References</h2>_
 
-1. Chao, A., Wang, Y.T. & Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. _Methods in Ecology and Evolution_ (to appear). 
+1. Chao, A., Wang, Y. T. and Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. _Methods in Ecology and Evolution_, __4__, 1091-1100.
 
 2. Chao, A. & Jost, L. (2012) Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. _Ecology_, __93__, 2533-2547.
 
 3. Chao, A. & Shen, T.J. (2003) Nonparametric estimation of Shannon's index of diversity when there are unseen species. _Environmental and Ecological Statistics_, __10__, 429-443.
 
 4. Grassberger, P. (2003) Entropy estimates from insufficient samplings. <a href="http://www.arxiv.org/" target="_blank">URL</a>. arXiv:physics/0307138v2. Updated 2008.
-
 
 5. Zahl, S. (1977) Jackknifing an index of diversity. _Ecology_, __58__, 907-913.
 

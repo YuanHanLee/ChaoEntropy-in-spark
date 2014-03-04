@@ -1,3 +1,2 @@
 #### Note
-* Chao_entropy (2013) estimator, see Chao et al. (2013)
-* Observed entropy estimator, the observed entropy estimator
+* Chao_entropy (2013) estimator, see Chao, A., Wang, Y. T. and Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. *Methods in Ecology and Evolution*, **4**, 1091-1100.

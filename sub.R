@@ -10,11 +10,15 @@ BasicInfoFun_Ind <- function(x, B) {
   } else {
     C <- 1
   }
+  
   i <- 1:n
   tmp1 <- sum(sapply(i, function(i) i * (i-1) * sum(x == i)))
   tmp2 <- sum(sapply(i, function(i) i * sum(x == i)))
   gamma <- max((D / C) * (tmp1 / (tmp2 * (tmp2 - 1))) - 1 , 0)
   CV <- sqrt(gamma)    #  Estimated CV
+  
+  C <- round(C, 5)
+  CV <- round(CV, 5)
   
   col1 <- c("Number of observed individuals", 
             "Number of observed species", 
@@ -44,7 +48,7 @@ BasicInfoFun_Sam <- function(x, B) {
   } else {
     C <- 1
   }
-  
+  C <- round(C, 5)
   col1 <- c("Number of observed sampling units", 
             "Number of observed species", 
             "Number of singletons", 
