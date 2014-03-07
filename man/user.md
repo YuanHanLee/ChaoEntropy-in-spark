@@ -7,6 +7,7 @@ User Guide
   * [Data Type](#type)
   * [Dataset](#dataset)
   * [Import Data](#import)
+  * [Upload Data](#upload)
 * [General Settings](#gen-settings)
   * [Estimator](#estimator)
   * [Bootstraps](#bootstraps)
@@ -63,6 +64,18 @@ Since there are two datasets, the imported data contain two lines (separated by 
   ```
 
 The import data contain two lines (separated by return), the first line includes ant data , and the second line includes seedlings data. **For each line, the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found).** All element entries should be separated by blank space (" "). For example, ant data, 62 sampling units were used. The most frequent species was found in 29 sampling units, the second most frequent species was found in 20 units, etc. Although the species incidences in this example are entered in a decreasing order, the ordering is not relevant in our analysis.
+
+<h3 id="upload">Upload Data</h3>
+**ChaoEntropy** also provides a upload function. After click the **Upload data** button, there will show the **file choose** button to upload the data. **User's data MUST be .csv**. After upload the data, the title of your uploaded data will be listed in the box: **Select dataset**. The upload formats for the abundance data and incidence data are different. The data formats for the two types of data are described below.
+
+* Upload abundance data: 
+**In the file, each column represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit) followed by the species abundances.**
+
+* Upload incidence data:
+**In the file, each column also represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found).**
+
+<img src="https://www.dropbox.com/s/enjfnrq5hsi7e2w/123.png">
+<img src="http://3.bp.blogspot.com/_QiPF79s59xE/TUmbZEcjEfI/AAAAAAAAAHs/3iEhOIVsoMo/s1600/spade.png">
 
 _<h2 id="gen-settings">General settings</h2>_
 <h3 id="estimator">Estimator</h3>

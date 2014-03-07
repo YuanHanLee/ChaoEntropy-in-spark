@@ -33,22 +33,32 @@ shinyUI(pageWithSidebar(
     wellPanel(
       selectInput(inputId="datatype", label="Select data type:",
                   choices=c("Abundance data"="abu", "Incidence data"="inc")),
-      uiOutput("choose_dataset"),
       
+      radioButtons(inputId="source", "Choose one:", 
+                   choices=c("Import data" = "import", "Upload data" = "upload")
+      ),
+      conditionalPanel(condition="input.source == 'upload'",
+                       fileInput("files", "File data")
+      ),
+      
+      
+      uiOutput("choose_dataset"),
       p(em("Using ctrl / command key to select multiple datasets you want")),
       
-      p("Import data:"),
-      conditionalPanel(
-        condition="input.datatype == 'abu'",
-        tags$textarea(id="copyAndPaste_abu", rows=5, 
-                      "Spider 46 22 17 15 15  9  8  6  6  4  2  2  2  2  1  1  1  1  1  1  1  1  1  1  1  1  \nBirds 752 276 194 126 121 97  95  83  72  44  39  0  16  15  0  13  9  9  9  8  7  4  0  0  2  2  1  1  1")
-      ),
-      conditionalPanel(
-        condition="input.datatype == 'inc'",
-        tags$textarea(id="copyAndPaste_inc", rows=5, 
-                      "Ant 62  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  5  5  5  5  6  6  7  9  9  9  9 10 10 12 13 14 14 14 15 15 16 18 19 19 20 29 \nSeedlings 121  61  47  52  43  43   9  24   5  24  11  11  13  17   6  10   3   8   9   9  3   6   6   1   7   4   6   6   4   3   4   2   2   1   1")
-      ),          
-      p(em("Refer to user guide for importing data"))
+      conditionalPanel(condition="input.source == 'import'",
+                       p("Import data:"),
+                       conditionalPanel(
+                         condition="input.datatype == 'abu'",
+                         tags$textarea(id="copyAndPaste_abu", rows=5, 
+                                       "Spider 46 22 17 15 15  9  8  6  6  4  2  2  2  2  1  1  1  1  1  1  1  1  1  1  1  1  \nBirds 752 276 194 126 121 97  95  83  72  44  39  0  16  15  0  13  9  9  9  8  7  4  0  0  2  2  1  1  1")
+                       ),
+                       conditionalPanel(
+                         condition="input.datatype == 'inc'",
+                         tags$textarea(id="copyAndPaste_inc", rows=5, 
+                                       "Ant 62  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  5  5  5  5  6  6  7  9  9  9  9 10 10 12 13 14 14 14 15 15 16 18 19 19 20 29 \nSeedlings 121  61  47  52  43  43   9  24   5  24  11  11  13  17   6  10   3   8   9   9  3   6   6   1   7   4   6   6   4   3   4   2   2   1   1")
+                       ),          
+                       p(em("Refer to user guide for importing data"))
+      )
       
     ),
     
@@ -66,7 +76,7 @@ shinyUI(pageWithSidebar(
         checkboxGroupInput(inputId="method2", label="Select the methods:",
                            choices=c("Chao", "Observed"), selected=c("Chao", "Observed"))
       ),
-      numericInput(inputId="nboot", label="Number of bootstraps", value=200, min=1, max=1000, step=1),
+      numericInput(inputId="nboot", label="Number of bootstraps", value=100, min=1, max=1000, step=1),
       numericInput(inputId="conf", label="Confidence level", value=0.95, min=0, max=1, step=0.01)
     )
     

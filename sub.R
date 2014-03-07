@@ -5,11 +5,16 @@ BasicInfoFun_Ind <- function(x, B) {
   D <- sum(x > 0)
   if (f2 > 0) {
     C <- 1 - f1 / n * ((n - 1) * f1 / ((n - 1) * f1 + 2 * f2))
+    f0 <- (n - 1) / n * f1^2 / (2 * f2)
   } else if (f2 == 0 & f1 != 0) {
     C <- 1 - f1 / n * ((n - 1) * (f1 - 1) / ((n - 1) * (f1 - 1) + 2))
+    f0 <- (n - 1) / n * f1 * (f1 - 1) / 2
   } else {
     C <- 1
+    f0 <- (n - 1) / n * f1 * (f1 - 1) / 2
   }
+  f0 <- ceiling(f0)
+  S <- D + f0
   
   i <- 1:n
   tmp1 <- sum(sapply(i, function(i) i * (i-1) * sum(x == i)))
@@ -17,18 +22,19 @@ BasicInfoFun_Ind <- function(x, B) {
   gamma <- max((D / C) * (tmp1 / (tmp2 * (tmp2 - 1))) - 1 , 0)
   CV <- sqrt(gamma)    #  Estimated CV
   
-  C <- round(C, 5)
-  CV <- round(CV, 5)
+  C <- round(C, 3)
+  CV <- round(CV, 3)
   
   col1 <- c("Number of observed individuals", 
             "Number of observed species", 
+            "Estimated speceis richness by Chao 1 (Chao, 1984)",
             "Number of singletons", 
             "Number of doubletons", 
             "Estimated sample coverage", 
             "Estimated CV", 
             "Bootstrap replications for s.e. estimate")
-  col2 <- paste(c("n =", "D =", "f1 =", "f2 =", "C =", "CV =", "B ="),
-                c(n, D, f1, f2, C, CV, B))
+  col2 <- paste(c("n =", "D =", "Shat =", "f1 =", "f2 =", "C =", "CV =", "B ="),
+                c(n, D, S, f1, f2, C, CV, B))
   
   out <- data.frame(Meaning=col1, Value = col2)
   return(out)
@@ -43,20 +49,27 @@ BasicInfoFun_Sam <- function(x, B) {
   U <- sum(y)
   if (Q2 > 0) {
     C <- 1 - Q1 / U * ((t - 1) * Q1 / ((t - 1) * Q1 + 2 * Q2))
+    Q0 <- (t - 1) / t * Q1^2 / (2 * Q2)
   } else if (Q2 == 0 & Q1 != 0) {
     C <- 1 - Q1 / U * ((t - 1) * (Q1 - 1) / ((t - 1) * (Q1 - 1) + 2))
+    Q0 <- (t - 1) / t * Q1 * (Q1 - 1) / 2
   } else {
     C <- 1
+    Q0 <- (t - 1) / t * Q1 * (Q1 - 1) / 2
   }
-  C <- round(C, 5)
+  Q0 <- ceiling(Q0)
+  S <- Q0 + D
+  
+  C <- round(C, 3)
   col1 <- c("Number of observed sampling units", 
             "Number of observed species", 
+            "Estimated speceis richness by Chao 2 (Chao, 1987)",
             "Number of singletons", 
             "Number of doubletons", 
             "Estimated sample coverage", 
             "Bootstrap replications for s.e. estimate")
-  col2 <- paste(c("T =", "D =", "Q1 =", "Q2 =", "C =", "B ="),
-                c(t, D, Q1, Q2, C, B))
+  col2 <- paste(c("T =", "D =", "Shat =", "Q1 =", "Q2 =", "C =", "B ="),
+                c(t, D, S, Q1, Q2, C, B))
   out <- data.frame(Meaning=col1, Value = col2)
   return(out)
 }

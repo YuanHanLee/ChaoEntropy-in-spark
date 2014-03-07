@@ -193,6 +193,7 @@ hljs.initHighlightingOnLoad();
 <li><a href="#type">Data Type</a></li>
 <li><a href="#dataset">Dataset</a></li>
 <li><a href="#import">Import Data</a></li>
+<li><a href="#upload">Upload Data</a></li>
 </ul></li>
 <li><a href="#gen-settings">General Settings</a>
 
@@ -271,6 +272,19 @@ Seedlings 121  61  47  52  43  43   9  24   5  24  11  11  13  17   6  10   3   
 
 <p>The import data contain two lines (separated by return), the first line includes ant data , and the second line includes seedlings data. <strong>For each line, the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found).</strong> All element entries should be separated by blank space (&ldquo; &rdquo;). For example, ant data, 62 sampling units were used. The most frequent species was found in 29 sampling units, the second most frequent species was found in 20 units, etc. Although the species incidences in this example are entered in a decreasing order, the ordering is not relevant in our analysis.</p>
 
+<h3 id="upload">Upload Data</h3>
+
+<p><strong>ChaoEntropy</strong> also provides a upload function. After click the <strong>Upload data</strong> button, there will show the <strong>file choose</strong> button to upload the data. <strong>User&#39;s data MUST be .csv</strong>. After upload the data, the title of your uploaded data will be listed in the box: <strong>Select dataset</strong>. The upload formats for the abundance data and incidence data are different. The data formats for the two types of data are described below.</p>
+
+<ul>
+<li><p>Upload abundance data: 
+<strong>In the file, each column represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit) followed by the species abundances.</strong></p></li>
+<li><p>Upload incidence data:
+<strong>In the file, each column also represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found).</strong></p></li>
+</ul>
+
+<p><img src="https://www.dropbox.com/s/enjfnrq5hsi7e2w/123.png"></p>
+
 <p><em><h2 id="gen-settings">General settings</h2></em></p>
 
 <h3 id="estimator">Estimator</h3>
@@ -302,7 +316,7 @@ Seedlings 121  61  47  52  43  43   9  24   5  24  11  11  13  17   6  10   3   
 
 <h3 id="chaoentropy">Estimation</h3>
 
-<p>This tab panel shows the main output for <strong>ChaoEntropy</strong>. You can click <a href="">Download as csv file</a> to download the output table.</p>
+<p>This tab panel shows the main output for <strong>ChaoEntropy</strong>. It show a table of various Shannon entropy estimators, their standard error and confidence interval which the method you choose. You also can click <a href="">Download as csv file</a> to download the output table.</p>
 
 <p><em><h2 id="reference">References</h2></em></p>
 
