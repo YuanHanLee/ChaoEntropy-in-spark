@@ -71,11 +71,20 @@ The import data contain two lines (separated by return), the first line includes
 * Upload abundance data: 
 **In the file, each column represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit) followed by the species abundances.**
 
+<img src="http://i.imgur.com/ZYzkm9Z.png", width="400px", height="500px", 
+align=center, border=3>
+
+
+<a href="https://www.dropbox.com/s/rkkegvo4hyjak1u/abundance.csv" target="_blank">Download abundance demo file</a>
+
+
 * Upload incidence data:
 **In the file, each column also represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found).**
 
-<img src="https://www.dropbox.com/s/enjfnrq5hsi7e2w/123.png">
-<img src="http://3.bp.blogspot.com/_QiPF79s59xE/TUmbZEcjEfI/AAAAAAAAAHs/3iEhOIVsoMo/s1600/spade.png">
+<img src="http://i.imgur.com/DMZGJkP.png", width="400px", height="500px", align=center, border=3>
+
+<a href="https://www.dropbox.com/s/yyu8h806346kfsm/incidence.csv" target="_blank">Download incidence demo file</a>
+
 
 _<h2 id="gen-settings">General settings</h2>_
 <h3 id="estimator">Estimator</h3>

@@ -6,43 +6,48 @@ load("data/Birds.rda")
 load("data/Seedlings.rda")
 load("data/Spider.rda")
 
-source("sub.R")
-source("ChaoEntropyOnlineFunction.R")
+source("sub/subfun.R")
+source("sub/ChaoEntropyOnlineFunction.R")
 
 shinyServer(function(input, output) {
   tempRD2 <- paste(tempfile(), ".RData", sep="")
   
   loadPaste <- reactive({
-    if (is.null(input$files)) {
+    if (input$source == 'import') {
       if (input$datatype == "abu") {
         text <- input$copyAndPaste_abu
       } else {
         text <- input$copyAndPaste_inc
       }
     } else {
-      fileName <- input$files$datapath
-      
-      if (ncol(read.csv(fileName)) == 1) {
-        temp <- readChar(fileName, file.info(fileName)$size)
-        text <- gsub(pattern="\r", replacement=" ", temp)
+      if (is.null(input$files)) {
+        text <- "Not_uploaded"
       } else {
-        da <- read.csv(fileName, header=F)
+        fileName <- input$files$datapath
         
-        txt <- character()
-        for(i in 1:ncol(read.csv(fileName))) {
-          temp <- as.character(da[, i])
-          txt[i] <- paste(temp,collapse=" ")
-        }
-        
-        for(i in 2:ncol(read.csv(fileName))) {
-          txt[i] <- paste0(" \n", txt[i])
-        }
-        text <- paste0(txt, collapse=" ")
+        if (ncol(read.csv(fileName)) == 1) {
+          temp <- readChar(fileName, file.info(fileName)$size)
+          text <- gsub(pattern="\r", replacement=" ", temp)
+        } else {
+          da <- read.csv(fileName, header=F)
+          
+          txt <- character()
+          for(i in 1:ncol(read.csv(fileName))) {
+            temp <- as.character(da[, i])
+            txt[i] <- paste(temp,collapse=" ")
+          }
+          
+          for(i in 2:ncol(read.csv(fileName))) {
+            txt[i] <- paste0(" \n", txt[i])
+          }
+          text <- paste0(txt, collapse=" ") 
       }
+    }
       
 #       temp <- readChar(fileName, file.info(fileName)$size)
 #       text <- gsub(pattern="\n", replacement=" ", temp)
 #       text <- gsub(pattern="\r", replacement=" ", temp)
+
     }
     
     ##  把文字檔轉成數個vector而成的list
