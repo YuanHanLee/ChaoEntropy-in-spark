@@ -1,3 +1,15 @@
+GTM <- "
+<!-- Google Tag Manager -->
+  <noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-W3L6VW\"
+height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                                 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W3L6VW');</script>
+  <!-- End Google Tag Manager -->
+"  
+
 require(shiny)
 
 loadingBar <- tags$div(class="progress progress-striped active",
@@ -21,6 +33,7 @@ shinyUI(pageWithSidebar(
   headerPanel('ChaoEntropy Online'),
   sidebarPanel(
     tags$head(
+      div(id="GTM", HTML(GTM)), #add google tag manager
       tags$style(type="text/css", "label.radio { display: inline-block; }", ".radio input[type=\"radio\"] { float: none; }"),
       tags$style(type="text/css", "select { max-width: 250px; }"),
       tags$style(type="text/css", "input { max-width: 250px; }"),
