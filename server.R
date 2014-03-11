@@ -41,13 +41,8 @@ shinyServer(function(input, output) {
             txt[i] <- paste0(" \n", txt[i])
           }
           text <- paste0(txt, collapse=" ") 
+        }
       }
-    }
-      
-#       temp <- readChar(fileName, file.info(fileName)$size)
-#       text <- gsub(pattern="\n", replacement=" ", temp)
-#       text <- gsub(pattern="\r", replacement=" ", temp)
-
     }
     
     ##  把文字檔轉成數個vector而成的list
@@ -146,9 +141,17 @@ shinyServer(function(input, output) {
                                 nboot=input$nboot, conf=input$conf)
       temp <- round(temp, 3)
       output <- as.data.frame(temp)
-      tab <- cbind(Method=rownames(output), output)
+      tab <- cbind(Methods=rownames(output), output)
       rownames(tab) <- NULL
-      gis <- gvisTable(tab, options=list(width='90%', height='60%'))
+      tab$Estimator <- sprintf("%5.3f", tab$Estimator)
+      tab$'Bootstrap s.e.' <- sprintf("%5.3f", tab$'Bootstrap s.e.')
+      tab$'95 % Lower' <- sprintf("%5.3f", tab$'95 % Lower')
+      tab$'95 % Upper' <- sprintf("%5.3f", tab$'95 % Upper')
+      tab$Estimator <- sprintf("<center>%s</center>", tab$Estimator)
+      tab$'Bootstrap s.e.' <- sprintf("<center>%s</center>", tab$'Bootstrap s.e.')
+      tab$'95 % Lower' <- sprintf("<center>%s</center>", tab$'95 % Lower')
+      tab$'95 % Upper' <- sprintf("<center>%s</center>", tab$'95 % Upper')
+      gis <- gvisTable(tab, options=list(width='90%', height='60%', allowHtml=TRUE))
       gis$html <- gis$html[-c(3:4)]
       return(list(temp, gis))
       

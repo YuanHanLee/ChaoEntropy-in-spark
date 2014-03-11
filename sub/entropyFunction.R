@@ -225,20 +225,21 @@ ChaoEntropyOnline <-
       if (nboot < 1) 
         nboot <- 1
       if (nboot == 1) 
-        cat("Warning: When \"nboot\" =", B, ", the bootstrap s.e. and confidence interval can't be calculated.", 
+        cat("Warning: When \"Number of bootstraps\" =", B, ", the bootstrap s.e. and confidence interval can't be calculated.", 
             "\n\n")
     }
     method <- match.arg(method, several.ok=T)
     datatype <- match.arg(datatype)
     if (datatype == "abundance") {
       if (sum(data) == 0) 
-        stop("Error: The data didn't have enough information.")
+        stop("The data didn't have any information.")
       if (sum(data > 0) == 1) {
         cat("Warning: When the individual-based (abundance) data only have \"ONE\" species.", 
             "\n")
         cat("         ALL estimator are equal to 0,and the standard error will meaningless.", 
             "\n\n")
-        out <- data.frame(Estimator = rep(0, 6))
+        out <- data.frame(rep(0, 6), rep(0, 6), rep(0, 6), rep(0, 6))
+        colnames(out) <- c('Estimator', 'Bootstrap s.e.', "95 % Lower", '95 % Upper')
         rownames(out) <- c("Chao_entropy (2013)", "Chao_Shen (2003)", 
                            "Grassberger (2003)", "Zahl (1977) Jackknife", 
                            "Zhang (2012) Hz*", "Observed entropy")

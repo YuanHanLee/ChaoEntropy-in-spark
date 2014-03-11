@@ -33,7 +33,7 @@ shinyUI(pageWithSidebar(
   headerPanel('ChaoEntropy Online'),
   sidebarPanel(
     tags$head(
-      div(id="GTM", HTML(GTM)), #add google tag manager
+#       div(id="GTM", HTML(GTM)), #add google tag manager
       tags$style(type="text/css", "label.radio { display: inline-block; }", ".radio input[type=\"radio\"] { float: none; }"),
       tags$style(type="text/css", "select { max-width: 250px; }"),
       tags$style(type="text/css", "input { max-width: 250px; }"),
