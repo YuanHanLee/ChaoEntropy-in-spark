@@ -2,12 +2,12 @@ GTM <- "
 <!-- Google Tag Manager -->
   <noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-W3L6VW\"
 height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                                 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-W3L6VW');</script>
-  <!-- End Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W3L6VW');</script>
+<!-- End Google Tag Manager -->
 "  
 
 require(shiny)
@@ -33,15 +33,15 @@ shinyUI(pageWithSidebar(
   headerPanel('ChaoEntropy Online'),
   sidebarPanel(
     tags$head(
-#       div(id="GTM", HTML(GTM)), #add google tag manager
+      #       div(id="GTM", HTML(GTM)), #add google tag manager
       tags$style(type="text/css", "label.radio { display: inline-block; }", ".radio input[type=\"radio\"] { float: none; }"),
       tags$style(type="text/css", "select { max-width: 250px; }"),
       tags$style(type="text/css", "input { max-width: 250px; }"),
       tags$style(type="text/css", "textarea { max-width: 230px; }"),
       tags$style(type='text/css', ".span4 { max-width: 300px; }")
     ),
-#     actionButton("goButton", "Run!"),
-
+    #     actionButton("goButton", "Run!"),
+    
     p(h4("Data Setting")),
     wellPanel(
       selectInput(inputId="datatype", label="Select data type:",
@@ -51,7 +51,7 @@ shinyUI(pageWithSidebar(
                    choices=c("Import data" = "import", "Upload data" = "upload")
       ),
       conditionalPanel(condition="input.source == 'upload'",
-                       fileInput("files", "File data")
+                       fileInput("files", "Choose File (.csv)")
       ),
       
       

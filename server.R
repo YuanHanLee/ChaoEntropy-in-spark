@@ -7,7 +7,8 @@ load("data/Seedlings.rda")
 load("data/Spider.rda")
 
 source("sub/subfun.R")
-source("sub/ChaoEntropyOnlineFunction.R")
+# source("sub/ChaoEntropyOnlineFunction.R")
+source("sub/entropyFunction.R")
 
 shinyServer(function(input, output) {
   tempRD2 <- paste(tempfile(), ".RData", sep="")
@@ -143,10 +144,10 @@ shinyServer(function(input, output) {
       output <- as.data.frame(temp)
       tab <- cbind(Methods=rownames(output), output)
       rownames(tab) <- NULL
-      tab$Estimator <- sprintf("%5.3f", tab$Estimator)
-      tab$'Bootstrap s.e.' <- sprintf("%5.3f", tab$'Bootstrap s.e.')
-      tab$'95 % Lower' <- sprintf("%5.3f", tab$'95 % Lower')
-      tab$'95 % Upper' <- sprintf("%5.3f", tab$'95 % Upper')
+      tab$Estimator <- sprintf("%1.3f", tab$Estimator)
+      tab$'Bootstrap s.e.' <- sprintf("%1.3f", tab$'Bootstrap s.e.')
+      tab$'95 % Lower' <- sprintf("%1.3f", tab$'95 % Lower')
+      tab$'95 % Upper' <- sprintf("%1.3f", tab$'95 % Upper')
       tab$Estimator <- sprintf("<center>%s</center>", tab$Estimator)
       tab$'Bootstrap s.e.' <- sprintf("<center>%s</center>", tab$'Bootstrap s.e.')
       tab$'95 % Lower' <- sprintf("<center>%s</center>", tab$'95 % Lower')
