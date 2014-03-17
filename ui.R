@@ -113,7 +113,13 @@ shinyUI(pageWithSidebar(
                  includeMarkdown("man/estimator_inc.md"))
       ),
       
-      tabPanel("User Guide", includeMarkdown("man/user.md"))
+      tabPanel("Visualization", h3("Comparison with different methods"), 
+               loadingPanel,
+               plotOutput("visualization")
+#                downloadLink("dlvis", "Download as pdf file")
+      ),
+      tabPanel("User Guide", includeMarkdown("man/user.md")),
+      tabPanel("R code", includeMarkdown("man/[R]code.md"))
     )
   )
 ))

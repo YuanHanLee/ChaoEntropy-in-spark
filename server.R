@@ -1,5 +1,6 @@
 require(shiny)
 require(googleVis)
+require(ggplot2)
 
 load("data/Ant.rda")
 load("data/Birds.rda")
@@ -135,12 +136,21 @@ shinyServer(function(input, output) {
   })
   
   
-  output$est <- renderPrint({
-    dataset <-   selectedData()
+  computation <- reactive({
+    dataset <- selectedData()
     out <- lapply(dataset, function(x) {
       temp <- ChaoEntropyOnline(data=x, datatype=input$datatype, method=mymethod(),
                                 nboot=input$nboot, conf=input$conf)
       temp <- round(temp, 3)
+      
+      ##  Picture
+      df <- data.frame(Methods=rownames(temp), temp)
+      rownames(df) <- NULL
+      colnames(df) <- c("Methods", "Estimator", "SE", "Lower", "Upper")
+      p <- ggplot(df, aes(Methods, Estimator, ymin=Lower, ymax=Upper, colour=Methods))
+      pic <- p + geom_errorbar(width = 0.5, size=2) + geom_point(size=5)
+      
+      ##  Google Vis Table
       output <- as.data.frame(temp)
       tab <- cbind(Methods=rownames(output), output)
       rownames(tab) <- NULL
@@ -154,10 +164,14 @@ shinyServer(function(input, output) {
       tab$'95 % Upper' <- sprintf("<center>%s</center>", tab$'95 % Upper')
       gis <- gvisTable(tab, options=list(width='90%', height='60%', allowHtml=TRUE))
       gis$html <- gis$html[-c(3:4)]
-      return(list(temp, gis))
-      
+      return(list(temp, gis, pic))
     })
-    
+    out
+  })
+  
+  output$est <- renderPrint({
+    dataset <- selectedData()
+    out <- computation()
     excl <- list()
     gtab <- list()
     for (i in seq_along(dataset)) {
@@ -167,10 +181,31 @@ shinyServer(function(input, output) {
     names(gtab) <- input$dataset
     names(excl) <- input$dataset
     saveRDS(excl, tempRD2)
-    
     return(gtab)
-    
   })
+  
+#   myplot <- reactive({
+#     dataset <- selectedData()
+#     out <- computation()
+#     pic <- list()
+#     for (i in seq_along(dataset)) {
+#       pic[i] <- list(out[[i]][[3]])
+#     }
+#     return(pic[[1]])
+#   })
+  
+  output$visualization <- renderPlot({
+    dataset <- selectedData()
+    out <- computation()
+    pic <- list()
+    for (i in seq_along(dataset)) {
+      pic[i] <- list(out[[i]][[3]])
+    }
+    names(pic) <- input$dataset
+    print(pic)
+  })
+  
+  
   
   #Download ChaoEntropy output 
   output$dlest <- downloadHandler(
