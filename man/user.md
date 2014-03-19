@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -81,9 +84,7 @@ _<h3 id="upload">Upload Data</h3>_
 * Upload abundance data: 
 **In the file, each column represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit) followed by the species abundances.**
 
-<img src="http://i.imgur.com/ZYzkm9Z.png", width="400px", height="500px", 
-align=center, border=3>
-
+<img src="abundance.png", width="300px", height="400px",align=center, border=3>
 
 <a href="https://www.dropbox.com/s/rkkegvo4hyjak1u/abundance.csv" target="_blank">Download abundance demo file</a>
 
@@ -91,7 +92,7 @@ align=center, border=3>
 * Upload incidence data:
 **In the file, each column also represents a data, and the first entry is the title of the dataset (the title is not allowed to start with a numerical digit), the second entry is the total number of sampling units, followed by the species incidences abundances (the number of sampling units that each species is found).**
 
-<img src="http://i.imgur.com/DMZGJkP.png", width="400px", height="500px", align=center, border=3>
+<img src="incidence.png", width="300px", height="400px", align=center, border=3>
 
 <a href="https://www.dropbox.com/s/yyu8h806346kfsm/incidence.csv" target="_blank">Download incidence demo file</a>
 
@@ -121,7 +122,7 @@ This tab panel shows the main output for **ChaoEntropy**. It show a table of var
 
 _<h3 id="vis">Visualization</h3>_
 This tab panel shows the interactive estimator and confidence interval plot. The explanation can see the picture below:
-<img src="http://i.imgur.com/TJ1qMNM.png", width="700px", height="350px">
+<img src="confidence.png", width="700px", height="350px">
 
 
 <h2 id="reference">References</h2>
