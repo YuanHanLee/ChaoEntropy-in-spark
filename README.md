@@ -16,8 +16,8 @@ Interactive data analytics using <a href="http://www.r-project.org/" target="_bl
 
 Start R(studio) and copy-and-paste the commands below:
 
-```{r}
-install.packages('shiny')
+```coffee
+# install.packages('shiny')
 require('shiny')
 runGitHub('ChaoEntropyOnline', 'YuanHanLee')
 ```
