@@ -115,9 +115,8 @@ shinyUI(pageWithSidebar(
       
       tabPanel("Visualization", h3("Comparison with different methods"), 
                loadingPanel,
-               htmlOutput("visualization")
-#                plotOutput("visualization")
-#                downloadLink("dlvis", "Download as pdf file")
+               htmlOutput("visualization"),
+               includeMarkdown("man/visualization.md")
       ),
       tabPanel("User Guide", includeMarkdown("man/user.md")),
       tabPanel("R code", includeMarkdown("man/[R]code.md"))
