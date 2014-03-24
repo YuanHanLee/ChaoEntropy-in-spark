@@ -56,7 +56,7 @@ shinyUI(pageWithSidebar(
       
       
       uiOutput("choose_dataset"),
-      p(em("Using ctrl / command key to select multiple datasets you want")),
+      p(em("Click the blank space to select multiple datasets you want")),
       
       conditionalPanel(condition="input.source == 'import'",
                        p("Import data:"),
@@ -113,11 +113,11 @@ shinyUI(pageWithSidebar(
                  includeMarkdown("man/estimator_inc.md"))
       ),
       
-      tabPanel("Visualization", h3("Comparison with different methods"), 
-               loadingPanel,
-               htmlOutput("visualization"),
-               includeMarkdown("man/visualization.md")
-      ),
+#       tabPanel("Visualization", h3("Comparison with different methods"), 
+#                loadingPanel,
+#                htmlOutput("visualization"),
+#                includeMarkdown("man/visualization.md")
+#       ),
       tabPanel("User Guide", includeMarkdown("man/user.md")),
       tabPanel("R code", includeMarkdown("man/[R]code.md"))
     )

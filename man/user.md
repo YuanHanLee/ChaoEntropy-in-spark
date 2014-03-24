@@ -26,7 +26,6 @@ User Guide
 * [Output](#output)
   * [Data Summary](#summary)
   * [Esitmation](#chaoentropy)
-  * [Visualization](#vis)
 * [References](#reference)
 
 * * * * * * * *
@@ -35,7 +34,9 @@ User Guide
 The program **ChaoEntropy** (Shannon **entropy** proposed by **Chao** et al.) online is written in the <a href="http://www.r-project.org/" target="_blank">R</a> language and the interactive web application is built by using <a href="http://www.rstudio.com/shiny" target="_blank">Shiny</a>. The user provides a vector of abundances of individual species (abundance data) or incidences of individual species (incidence data). **ChaoEntropy** computes the Shannon entropy estimators, bootstrap standard error and confidence intervals.
 
 _<h3 id="cite">How to Cite</h3>_
-<font color="ff0000">If you use **ChaoEntropy** to obtain results for publication, you should cite the papers (Chao, A., Wang, Y. T. and Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. _Methods in Ecology and Evolution_, __4__, 1091-1100.)</font>
+<font color="ff0000">If you use **ChaoEntropy** to obtain results for publication, you should cite the papers (Chao, A., Wang, Y. T. and Jost, L. (2013) Entropy and the species accumulation curve: a novel entropy estimator via discovery rates of new species. _Methods in Ecology and Evolution_, __4__, 1091-1100.) along with the following reference for ChaoEntropy:
+
+<p style="padding-left: 30px;"> Lee, Y.-H., Tseng, K.-S. and Chao, A. (2014). ChaoEntropy online.</font>
   
 To help refine **ChaoEntropy**, your comments or feedbacks would be welcome (please send them to chao@stat.nthu.edu.tw).
 
@@ -114,11 +115,6 @@ This tab panel shows basic data information for the selected data. The output va
 
 _<h3 id="chaoentropy">Estimation</h3>_
 This tab panel shows the main output for **ChaoEntropy**. It show a table of various Shannon entropy estimators, their standard error and confidence interval which the method you choose. You also can click [Download as csv file]() to download the output table.
-
-_<h3 id="vis">Visualization</h3>_
-This tab panel shows the interactive estimator and confidence interval plot. The explanation can see the picture below:
-<img src="confidence.png", width="700px", height="350px">
-
 
 <h2 id="reference">References</h2>
 

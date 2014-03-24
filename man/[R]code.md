@@ -11,19 +11,23 @@ ChaoEntropy R code
 <h2 id="overview2">Overview</h2>
 The purpose of this R package **ChaoEntropy** is mainly to provide a new Shannon entropy estimator proposed by Chao et al. (2013) for both individual-based (abundance) data and sample-based (incidence) data.
 
+- Author: Anne Chao ; Y. H. Lee ; K. S. Tseng ; Y. T. Wang 
+- Maintainer: Anne Chao chao@stat.nthu.edu.tw
+- URL: http://chao.stat.nthu.edu.tw/blog/
+
 <h2 id="run">Run the development version</h2>
 - Required: <a href="http://www.r-project.org/" target="_blank">R</a>
 - Suggested: <a href="http://www.rstudio.com/ide/download/" target="_blank">Rstudio</a>
 
 Start R(studio) and copy-and-paste the commands below:
-```{r}
+``` coffee
 # install.packages('devtools')
 require(devtools)
 install_github('ChaoEntropy','YuanHanLee')
 require(ChaoEntropy)
 ```
 
-If you can not be installed by above way, try to download **.zip** or **.tar.gz** in this <a href="http://yuanhanlee.github.io/ChaoEntropy/" target="_blank">page</a>.
+You also can download the **.zip** or **.tar.gz** file in this <a href="http://yuanhanlee.github.io/ChaoEntropy/" target="_blank">page</a>.
 
 <h2 id="license">License</h2>
 The ChaoEntropy package is licensed under the GPLv2. See the files listed below for additional details. </font> 
