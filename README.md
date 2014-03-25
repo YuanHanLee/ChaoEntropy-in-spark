@@ -14,9 +14,9 @@
 
 ### Run the development version of the web app locally
 
-- Required: [R](http://cran.rstudio.com/)
-- Required: A modern browser (e.g., Chrome, Firefox, or Safari). Internet Explorer is not supported.
-- Suggested: [Rstudio](http://www.rstudio.com/ide/download/)
+- Required: `R`
+- Required: A modern browser (e.g., `Chrome`, `Firefox`, or `Safari`). :warning: Internet Explorer may not supported.
+- Suggested: `Rstudio`
 
 Start R(studio) and copy-and-paste the commands below:
 
